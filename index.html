@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Image Animating</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Load UMD builds so the browser gets globals instead of ESM modules -->
+  <script src="https://unpkg.com/gif.js.optimized/dist/gif.js"></script>
+  <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.11.1/dist/ffmpeg.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div class="controls">
+      <input id="files" type="file" accept="image/*" multiple />
+      <div class="row">
+        <label>Speed (fps)</label>
+        <input id="speed" type="range" min="1" max="60" value="12" />
+        <span id="speedVal">12</span>
+      </div>
+      <div class="row">
+        <label>Background</label>
+        <select id="bgMode">
+          <option value="black" selected>Black</option>
+          <option value="transparent">Transparent</option>
+          <option value="custom">Custom</option>
+        </select>
+        <input id="bgColor" type="color" value="#000000" title="Background color" />
+      </div>
+      <div class="row">
+        <button id="play">Play</button>
+        <button id="pause">Pause</button>
+        <button id="prev">◀</button>
+        <button id="next">▶</button>
+        <button id="exportGif">Export GIF</button>
+        <button id="exportMp4">Export MP4</button>
+      </div>
+      <div id="status" class="status">No frames loaded.</div>
+    </div>
+
+    <div class="viewer">
+      <canvas id="canvas"></canvas>
+      <div class="thumbs" id="thumbs"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
